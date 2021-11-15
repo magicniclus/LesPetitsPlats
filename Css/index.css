@@ -1,3 +1,61 @@
-
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+body main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body main .topLogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+body main .topLogo h1 {
+  margin: 0;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 36px;
+  color: #D04F4F;
+  margin-top: 5px;
+  cursor: pointer;
+}
+body main .searchBar {
+  width: 90%;
+  position: relative;
+  background-color: #E7E7E7;
+  border-radius: 5px;
+  margin-bottom: 1em;
+}
+body main .searchBar input {
+  width: 90%;
+  height: 69px;
+  margin-left: 2em;
+  border-radius: 5px;
+  border: none;
+  background-color: #E7E7E7;
+  font-size: 18px;
+  z-index: 1;
+}
+body main .searchBar input ::placeholder {
+  padding-left: 2em;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+}
+body main .searchBar i {
+  font-size: 2em;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 
 /*# sourceMappingURL=index.css.map */

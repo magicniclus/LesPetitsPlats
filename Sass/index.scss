@@ -1,0 +1,22 @@
+//Style Page Index
+
+// Import
+@import "Mixins/header.scss";
+@import "Mixins/searchBar.scss";
+
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include header;
+        @include searchBar;
+    }
+}

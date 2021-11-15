@@ -1,11 +1,8 @@
 //Création d'une search bar
 
 export class SearchBar {
-    constructor (domTarget, props, phrasing, callback) {
-        this.callback = callback;
+    constructor (domTarget, phrasing) {
         this.phrasing = phrasing;
-
-        this.data = props;
 
         this.clickValue = false;
 
