@@ -1,40 +1,48 @@
-const activeFilters = {
-    appliance : null,
+import {recipes} from '../Data/data.js';
+
+export let all = [];
+
+export const activeFilters = {
+    appliance : [],
     ustenils  : [],
     ingredients : [],
     texts : []
 }
 
-const arrayAll = [];
-const arrayId = [];
-const arrayName = [];
-const arrayAppliance = [];
-const arrayUstensils = [];
-const arrayIngredients = [];
+export function addSetIngredient () {
+    recipes.forEach(element => {
+        element.ingredients.forEach(ing => {
+            activeFilters.ingredients.push(ing.ingredient.toLowerCase())
+        })
+    })
+    return activeFilters.ingredients;
+}
 
-let data, ingredient, appliance, ustenils, array, all;
+export function addSetAppliance () {
+    recipes.forEach(element => {
+        activeFilters.appliance.push(element.appliance.toLowerCase());
+    })
+    return activeFilters.appliance;
+}
 
-export function initDataManager() {
+export function addSetUstensil () {
+    recipes.forEach(element => {
+        element.ustensils.forEach(ust => {
+            activeFilters.ustenils.push(ust.toLowerCase())
+        })
+    })
+    return addSetIngredient;
+}
 
+export function filterIngredient (value) {
+}
 
-    arrayAll.forEach(recipe => {
-        arrayAll.push(recipe);
-        arrayId.push(recipe.id);
-        arrayName.push(recipe.name);
-        arrayAppliance.push(recipe.appliance);
-        arrayUstensils.push(recipe.ustensils);
-        arrayIngredients.push(recipe.ingredients);
+export function allData () {
+    recipes.forEach(recipe => {
+        all.push(recipe)
     });
-
-    all = new Set();
-    ingredient = new Set();
-    appliance = new Set();
-    ustenils = new Set();
-    array = [];
-
-    console.log('initData');
+    return all;
 }
 
-export default {
-    initDataManager
-}
+
+

@@ -14,6 +14,7 @@ export class FiltreButton {
         domTarget.appendChild(this.DOM)
         this.clickValue = false;
         this.render();
+        // console.log(this.list);
     }
 
     render(){

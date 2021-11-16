@@ -1,4 +1,14 @@
 export class AddTag {
+    /**
+     * [constructor description]
+     *
+     * @param   {HTMLElement}  domTarget  [domTarget description]
+     * @param   {Object}  tag        [tag description]
+     * @param   {Object}  value      [value description]
+     * @param   {Function}  callback   [callback description]
+     *
+     * @constuctor        
+     */
     constructor (domTarget, tag, value, callback){
         this.callback = callback;
         this.tag = tag;
@@ -15,7 +25,7 @@ export class AddTag {
 
     addTag () {
         this.tag.forEach(tag => {
-            this.tagContainer = document.createElement('div');
+            this.tagContainer = document.createElement('button');
             this.tagContainer.setAttribute('class', 'tagContainer');
             const tags = document.createElement('span');
             tags.innerHTML += tag;
@@ -34,6 +44,4 @@ export class AddTag {
         }
         this.tagContainer.appendChild(arrow);
     }
-
-
 }
