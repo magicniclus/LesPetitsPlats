@@ -1,4 +1,4 @@
-import { addSetIngredient, addSetAppliance, filterIngredient, addSetUstensil, allData, activeFilters, all} from "../Data/dataManager.js";
+import { addSetIngredient, addSetAppliance, addSetUstensil, allData, activeFilters, all} from "../Data/dataManager.js";
 import { FiltreButton } from "../Components/filtreButton.js"; 
 import { AddTag } from "../Components/addTag.js";
 import { SearchBar } from "../Components/searchBar.js";
@@ -15,6 +15,7 @@ let textArrea;
 export async function init (domTarget) {
     await addLogo(domTarget);
     await new SearchBar(domTarget, 'Rechercher un ingrédient, appareil, ustensiles ou une recette');
+    // await new AddTag(domTarget, )
     await btnContainer(domTarget);
     textArrea = document.createElement('aside');
     textArrea.setAttribute('class', 'vignette__container')
@@ -27,12 +28,12 @@ export async function init (domTarget) {
  *
  * @return  {void}  [return description]
  */
-function updateMain (){
+export function updateMain (){
     textArrea.innerHTML = '';
     allData().forEach(recipe => {
         new Vignette (textArrea, recipe);
     });
-    console.log(all);
+    console.log(activeFilters);
 }
 
 
@@ -96,9 +97,11 @@ function filterDataIngredient (value) {
         });
     });
     if (!activeFilters.ingredients.includes(value)){
-        activeFilters.ingredients.push(value.toLowerCase())
+        activeFilters.ingredients.push({
+            type: 'ing',
+            name: value,
+        })
     };
-    console.log(activeFilters);
     updateMain();
 }
 
@@ -118,13 +121,22 @@ function filterDataAppliance (value) {
             }
     });
     if (!activeFilters.appliance.includes(value)){
-        activeFilters.appliance.push(value.toLowerCase())
+        activeFilters.appliance.push({
+            type: 'app',
+            name: value.toLowerCase(),
+        })
     };
-    console.log(activeFilters);
     updateMain();
 }
 
 
+/**
+ * [filterUstensil description]
+ *
+ * @param   {String}  value  [value description]
+ *
+ * @return  {Void}         [return description]
+ */
 function filterUstensil(value) {
     let all = [];
     allData().forEach(recipe => {
@@ -136,8 +148,10 @@ function filterUstensil(value) {
     });
 
     if (!activeFilters.ustenils.includes(value)){
-        activeFilters.ustenils.push(value.toLowerCase())
+        activeFilters.ustenils.push({
+            type: 'ust',
+            name: value.toLowerCase(),
+        })
     };
-    console.log(activeFilters);
     updateMain();
 }

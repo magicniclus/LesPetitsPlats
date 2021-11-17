@@ -37,15 +37,10 @@ export function addSetUstensil () {
     return ustensils;
 }
 
-export function filterIngredient (value) {
-}
-
 export function allData () {
     recipes.forEach(recipe => {
         all.push(recipe)
     });
     return all;
 }
-
-
 

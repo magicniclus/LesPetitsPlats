@@ -1,5 +1,7 @@
 // Création du bouton de filtre 
 
+import { updateMain } from "../Pages/index.js";
+
 export class FiltreButton {
 
     constructor (domTarget, props, title, callback, className, phrasing) {
