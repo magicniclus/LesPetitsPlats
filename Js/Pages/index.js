@@ -95,7 +95,9 @@ function filterDataIngredient (value) {
             }
         });
     });
-    activeFilters.ingredients.push(value.toLowerCase())
+    if (!activeFilters.ingredients.includes(value)){
+        activeFilters.ingredients.push(value.toLowerCase())
+    };
     console.log(activeFilters);
     updateMain();
 }
@@ -115,7 +117,9 @@ function filterDataAppliance (value) {
                 all.push(recipe);
             }
     });
-    activeFilters.appliance.push(value.toLowerCase())
+    if (!activeFilters.appliance.includes(value)){
+        activeFilters.appliance.push(value.toLowerCase())
+    };
     console.log(activeFilters);
     updateMain();
 }
@@ -130,7 +134,10 @@ function filterUstensil(value) {
             }
         });
     });
-    activeFilters.ustenils.push(value.toLowerCase())
+
+    if (!activeFilters.ustenils.includes(value)){
+        activeFilters.ustenils.push(value.toLowerCase())
+    };
     console.log(activeFilters);
     updateMain();
 }
