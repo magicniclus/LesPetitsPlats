@@ -10,28 +10,31 @@ export const activeFilters = {
 }
 
 export function addSetIngredient () {
+    const ingredients = []
     recipes.forEach(element => {
         element.ingredients.forEach(ing => {
-            activeFilters.ingredients.push(ing.ingredient.toLowerCase())
+            ingredients.push(ing.ingredient.toLowerCase())
         })
     })
-    return activeFilters.ingredients;
+    return ingredients;
 }
 
 export function addSetAppliance () {
+    const appliance = [];
     recipes.forEach(element => {
-        activeFilters.appliance.push(element.appliance.toLowerCase());
+        appliance.push(element.appliance.toLowerCase());
     })
-    return activeFilters.appliance;
+    return appliance;
 }
 
 export function addSetUstensil () {
+    const ustensils = [];
     recipes.forEach(element => {
         element.ustensils.forEach(ust => {
-            activeFilters.ustenils.push(ust.toLowerCase())
+            ustensils.push(ust.toLowerCase())
         })
     })
-    return addSetIngredient;
+    return ustensils;
 }
 
 export function filterIngredient (value) {

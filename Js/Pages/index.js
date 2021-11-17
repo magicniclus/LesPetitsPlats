@@ -19,7 +19,7 @@ export async function init (domTarget) {
     textArrea = document.createElement('aside');
     textArrea.setAttribute('class', 'vignette__container')
     await domTarget.appendChild(textArrea);
-    updateMain();
+    await updateMain();
 }
 
 /**
@@ -32,6 +32,7 @@ function updateMain (){
     allData().forEach(recipe => {
         new Vignette (textArrea, recipe);
     });
+    console.log(all);
 }
 
 
@@ -46,13 +47,13 @@ async function btnContainer(domTarget) {
     filterContainer.setAttribute('class', 'filterContainer');
 
     //Add Ingreédients Btn
-    await new FiltreButton(filterContainer, addSetIngredient(), 'Ingrédients', filterData, 'Ingredients', 'Recherche un ingrédient');
+    await new FiltreButton(filterContainer, addSetIngredient(), 'Ingrédients', filterDataIngredient, 'Ingredients', 'Recherche un ingrédient');
 
     // //Add Appareil Btn 
-    await new FiltreButton(filterContainer, addSetAppliance(), 'Appareil', filterIngredient, 'Appareil', 'Rechercher un appareil');
+    await new FiltreButton(filterContainer, addSetAppliance(), 'Appareil', filterDataAppliance, 'Appareil', 'Rechercher un appareil');
 
     // //Add Ustensils Btn
-    await new FiltreButton(filterContainer, addSetUstensil(), 'Ustensiles', filterIngredient, 'Ustensiles', 'Rechercher un ustensil');
+    await new FiltreButton(filterContainer, addSetUstensil(), 'Ustensiles', filterUstensil, 'Ustensiles', 'Rechercher un ustensil');
 
     domTarget.appendChild(filterContainer);
 }
@@ -77,8 +78,16 @@ function addLogo(parent) {
     parent.appendChild(topLogo);
 };
 
-function filterData (value) {
-    all = []
+
+/**
+ * [filterDataIngredient description]
+ *
+ * @param   {String}  value  [value description]
+ *
+ * @return  {void}         [return description]
+ */
+function filterDataIngredient (value) {
+    let all = [];
     allData().forEach(recipe => {
         recipe.ingredients.forEach(ingredients => {
             if (ingredients.ingredient.toLowerCase() == value) {
@@ -86,5 +95,42 @@ function filterData (value) {
             }
         });
     });
+    activeFilters.ingredients.push(value.toLowerCase())
+    console.log(activeFilters);
+    updateMain();
+}
+
+
+/**
+ * [filterDataAppliance description]
+ *
+ * @param   {String}  value  [value description]
+ *
+ * @return  {void}         [return description]
+ */
+function filterDataAppliance (value) {
+    let all = [];
+    allData().forEach(recipe => {
+            if (recipe.appliance.toLowerCase() == value) {
+                all.push(recipe);
+            }
+    });
+    activeFilters.appliance.push(value.toLowerCase())
+    console.log(activeFilters);
+    updateMain();
+}
+
+
+function filterUstensil(value) {
+    let all = [];
+    allData().forEach(recipe => {
+        recipe.ustensils.forEach(ustensil => {
+            if (ustensil.toLowerCase() == value) {
+                all.push(recipe);
+            }
+        });
+    });
+    activeFilters.ustenils.push(value.toLowerCase())
+    console.log(activeFilters);
     updateMain();
 }
