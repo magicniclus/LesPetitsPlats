@@ -22,7 +22,6 @@ export class AddTag {
     addTag () {
         Object.values(this.appliance).forEach(element =>{
             this.tagContainer = document.createElement('div');
-            this.tagContainer.setAttribute('class', 'tagContainer');
             this.tagContainer.setAttribute('class', element.type);
             const tags = document.createElement('span');
             tags.innerHTML = element.name;

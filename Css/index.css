@@ -10,6 +10,31 @@ body main {
   justify-content: center;
   align-items: center;
 }
+body main .tagBar {
+  width: 90%;
+  display: flex;
+}
+body main .tagBar div {
+  margin-right: 1em;
+  padding: 0.5em 1em 0.5em 1em;
+  border-radius: 5px;
+}
+body main .tagBar div span {
+  color: white;
+}
+body main .tagBar div i {
+  margin-left: 10px;
+  color: white;
+}
+body main .tagBar .ing {
+  background-color: #3282F7;
+}
+body main .tagBar .app {
+  background: #68D9A4;
+}
+body main .tagBar .ust {
+  background: #ED6454;
+}
 body main .filterContainer {
   margin-top: 1em;
   width: 90%;

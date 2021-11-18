@@ -1,6 +1,7 @@
 //Style Page Index
 
 // Import
+@import "Mixins/addTag.scss";
 @import "Mixins/filtreButton.scss";
 @import "Mixins/header.scss";
 @import "Mixins/searchBar.scss";
@@ -18,6 +19,7 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        @include addTag;
         @include filtreButton;
         @include header;
         @include searchBar;
