@@ -1,39 +1,29 @@
 export class AddTag {
-    /**
-     * [constructor description]
-     *
-     * @param   {HTMLElement}  domTarget  [domTarget description]
-     * @param   {Object}  tag        [tag description]
-     * @param   {Object}  value      [value description]
-     * @param   {Function}  callback   [callback description]
-     *
-     * @constuctor        
-     */
-    constructor (domTarget, tag, value, callback){
+
+    appliance;
+    ustensils;
+    ingredients;
+    texts;
+
+    constructor (domTarget, tag, callback){
+        this.DOM = domTarget;
         this.callback = callback;
         this.tag = tag;
-        this.value = value;
-        this.DOM = document.createElement('div');
-        this.DOM.setAttribute('class', 'tagBar');
-        this.render ();
-        domTarget.appendChild(this.DOM);
+        for (const [key, value] of Object.entries(this.tag)) {
+            this[key] = value;
+        }
+        this.render (this.DOM);
     }
 
-    render(){
-        this.addTag();
+    render(domTarget){
+        this.addTag(domTarget);
+        console.log(this.DOM);
     }
 
-    addTag () {
-        this.tag.forEach(tag => {
-            this.tagContainer = document.createElement('button');
-            this.tagContainer.setAttribute('class', 'tagContainer');
-            const tags = document.createElement('span');
-            tags.innerHTML += tag;
-            this.tagContainer.appendChild(tags);
-            this.DOM.appendChild(this.tagContainer);
-            this.addArrow();
-        
-        });
+    addTag (domTarget) {
+        Object.values(this.appliance).forEach(element =>{
+            console.log(element.name);
+        })
     }
 
     addArrow () {

@@ -1,37 +1,37 @@
 import {recipes} from '../Data/data.js';
 
-export let all = [];
+export let all = new Set();
 
 export const activeFilters = {
     appliance : [],
-    ustenils  : [],
+    ustensils  : [],
     ingredients : [],
     texts : []
 }
 
 export function addSetIngredient () {
-    const ingredients = []
+    const ingredients = new Set ()
     recipes.forEach(element => {
         element.ingredients.forEach(ing => {
-            ingredients.push(ing.ingredient.toLowerCase())
+            ingredients.add(ing.ingredient.toLowerCase())
         })
     })
     return ingredients;
 }
 
 export function addSetAppliance () {
-    const appliance = [];
+    const appliance = new Set ();
     recipes.forEach(element => {
-        appliance.push(element.appliance.toLowerCase());
+        appliance.add(element.appliance.toLowerCase());
     })
     return appliance;
 }
 
 export function addSetUstensil () {
-    const ustensils = [];
+    const ustensils = new Set ();
     recipes.forEach(element => {
         element.ustensils.forEach(ust => {
-            ustensils.push(ust.toLowerCase())
+            ustensils.add(ust.toLowerCase())
         })
     })
     return ustensils;
@@ -39,7 +39,7 @@ export function addSetUstensil () {
 
 export function allData () {
     recipes.forEach(recipe => {
-        all.push(recipe)
+        all.add(recipe)
     });
     return all;
 }

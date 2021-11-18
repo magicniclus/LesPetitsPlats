@@ -1,6 +1,6 @@
 import { addSetIngredient, addSetAppliance, addSetUstensil, allData, activeFilters, all} from "../Data/dataManager.js";
 import { FiltreButton } from "../Components/filtreButton.js"; 
-import { AddTag } from "../Components/addTag.js";
+import { AddTag } from "../Components/addTag.js"
 import { SearchBar } from "../Components/searchBar.js";
 import { Vignette } from "../Components/vignettes.js";
 
@@ -13,14 +13,19 @@ let textArrea;
  *
  */
 export async function init (domTarget) {
+    domTarget.innerHTML = '';
     await addLogo(domTarget);
     await new SearchBar(domTarget, 'Rechercher un ingrédient, appareil, ustensiles ou une recette');
-    // await new AddTag(domTarget, )
+    const addTagBar = document.createElement('aside');
+    addTagBar.setAttribute('class', 'tagBar');
+    await domTarget.appendChild(addTagBar);
+    await updateTag(addTagBar);
     await btnContainer(domTarget);
     textArrea = document.createElement('aside');
     textArrea.setAttribute('class', 'vignette__container')
     await domTarget.appendChild(textArrea);
     await updateMain();
+    console.log(all);
 }
 
 /**
@@ -33,7 +38,12 @@ export function updateMain (){
     allData().forEach(recipe => {
         new Vignette (textArrea, recipe);
     });
-    console.log(activeFilters);
+    // console.log(activeFilters);
+}
+
+function updateTag (domTarget) {
+    new AddTag(domTarget, activeFilters)
+    init();
 }
 
 
@@ -103,6 +113,7 @@ function filterDataIngredient (value) {
         })
     };
     updateMain();
+    updateTag();
 }
 
 
@@ -127,6 +138,7 @@ function filterDataAppliance (value) {
         })
     };
     updateMain();
+    updateTag();
 }
 
 
@@ -147,11 +159,12 @@ function filterUstensil(value) {
         });
     });
 
-    if (!activeFilters.ustenils.includes(value)){
-        activeFilters.ustenils.push({
+    if (!activeFilters.ustensils.includes(value)){
+        activeFilters.ustensils.push({
             type: 'ust',
             name: value.toLowerCase(),
         })
     };
     updateMain();
+    updateTag();
 }
