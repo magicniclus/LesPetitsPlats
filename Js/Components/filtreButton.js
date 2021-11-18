@@ -1,6 +1,6 @@
 // Création du bouton de filtre 
 
-import { updateMain } from "../Pages/index.js";
+// import { updateMain } from "../Pages/index.js";
 
 export class FiltreButton {
 
