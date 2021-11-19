@@ -4,7 +4,7 @@
 
 export class FiltreButton {
 
-    constructor (domTarget, props, title, callback, className, phrasing) {
+    constructor (domTarget, props, title, callback, refresh, className, phrasing) {
         this.title = title;
         this.className = className;
         this.DOM = document.createElement('div');
@@ -13,6 +13,8 @@ export class FiltreButton {
         this.phrasing = phrasing;
         this.list = props;
         this.callback = callback;
+        this.refresh = refresh;
+        // this.fonctionDeux = fonctionDeux;
         domTarget.appendChild(this.DOM)
         this.clickValue = false;
         this.render();
@@ -28,6 +30,12 @@ export class FiltreButton {
         this.addArrow(filterTop, this.DOM, this.callback);
     }
 
+    /**
+     * [addInput description]
+     *
+     * @param   {HTMLElement}  parent  [parent description]
+     *
+     */
     addInput (parent){
         const input = document.createElement('input');
         input.setAttribute('type', "text");
@@ -43,6 +51,15 @@ export class FiltreButton {
         })
     }
 
+
+    /**
+     * [addArrow description]
+     *
+     * @param   {HTMLElement}  parent     [parent description]
+     * @param   {HTMLElement}  container  [container description]
+     * @param   {Function}  callback   [callback description]
+     *
+     */
     addArrow (parent, container, callback) {
         const arrow__container = document.createElement('div');
         arrow__container.setAttribute('class', 'filtreButton__Arrow')
@@ -62,6 +79,14 @@ export class FiltreButton {
         }
     }
 
+
+    /**
+     * [addTag description]
+     *
+     * @param   {InnerHTML}  parent    [parent description]
+     * @param   {Function}  callback  [callback description]
+     *
+     */
     addTag (parent, callback) {
         const tagContainer = document.createElement("div");
         tagContainer.setAttribute('class', 'tagContainer');
@@ -76,6 +101,7 @@ export class FiltreButton {
                 this.clickValue =! this.clickValue;
                 this.DOM.classList.remove('click');
                 callback(element);
+                this.refresh();
                 this.render();
             }
         });

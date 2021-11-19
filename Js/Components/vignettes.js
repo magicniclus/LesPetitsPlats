@@ -8,7 +8,7 @@ export class Vignette {
      */
     constructor (domTarget, props) {
         this.DOM = document.createElement('article');
-        this.DOM.setAttribute('class', 'vignette__container')
+        this.DOM.setAttribute('class', 'vignette__container');
         domTarget.appendChild(this.DOM);
         this.render(props)
     }
@@ -61,7 +61,7 @@ showIngredients(props, parent) {
     for (const element of Object.values(props.ingredients)) {
         ingredient.innerHTML += `
             <div class = ingredient__container>
-                <span class='ingredient'>${element.ingredient}:</span>
+                <span class='ingredient'>${element.ingredient}</span>
                 <span class='quantity'>${element.quantity != undefined ? element.quantity : ""}</span>
                 <span class='unit'>${element.unit != undefined ? element.unit : ""}</span>
             </div>    

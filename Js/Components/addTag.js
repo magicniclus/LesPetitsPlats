@@ -5,6 +5,14 @@ export class AddTag {
     ingredients;
     texts;
 
+    /**
+     * [constructor description]
+     *
+     * @param   {HTMLElement}  domTarget  [domTarget description]
+     * @param   {Object}  tag        [tag description]
+     * @param   {FileList}  callback   [callback description]
+     *
+     */
     constructor (domTarget, tag, callback){
         this.DOM = domTarget;
         this.callback = callback;
@@ -28,7 +36,6 @@ export class AddTag {
             this.tagContainer.appendChild(tags);
             this.DOM.appendChild(this.tagContainer);
             this.addArrow();
-            console.log(element);
         })
 
         Object.values(this.ustensils).forEach(element =>{
@@ -40,7 +47,6 @@ export class AddTag {
             this.tagContainer.appendChild(tags);
             this.DOM.appendChild(this.tagContainer);
             this.addArrow();
-            console.log(element);
         })
 
         Object.values(this.ingredients).forEach(element =>{
@@ -52,7 +58,6 @@ export class AddTag {
             this.tagContainer.appendChild(tags);
             this.DOM.appendChild(this.tagContainer);
             this.addArrow();
-            console.log(element);
         })
     }
 
